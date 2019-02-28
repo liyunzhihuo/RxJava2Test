@@ -17,7 +17,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.SimpleActivity"/>
+
         <activity android:name=".ui.OperatorsActivity"/>
+        <activity android:name=".ui.operators.MapExampleActivity"/>
+        <activity android:name=".ui.operators.ZipExampleActivity"/>
+        <activity android:name=".ui.operators.DisposableExampleActivity"/>
+
     </application>
 
 </manifest>

@@ -23,7 +23,7 @@ public class SimpleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.simple_act);
+        setContentView(R.layout.example_act);
         initUI();
 
     }

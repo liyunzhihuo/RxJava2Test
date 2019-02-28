@@ -8,6 +8,24 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MapExample"
+            android:onClick="aboutMap"
+            android:textAllCaps="false" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZipExample"
+            android:onClick="aboutZip"
+            android:textAllCaps="false" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DisposableExample"
+            android:onClick="aboutDisposable"
+            android:textAllCaps="false" />
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>
