@@ -20,7 +20,7 @@ import io.reactivex.schedulers.Schedulers;
 import xiao.rxjava2test.R;
 import xiao.rxjava2test.utils.AppConstant;
 
-public class DisposableExampleActivity extends AppCompatActivity {
+public class DisposableExActivity extends AppCompatActivity {
     private String TAG = this.getClass().getSimpleName();
 
     private TextView tvOut;

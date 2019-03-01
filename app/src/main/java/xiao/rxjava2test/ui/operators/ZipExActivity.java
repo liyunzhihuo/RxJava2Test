@@ -8,27 +8,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-
 import java.util.List;
-
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Function;
+import io.reactivex.functions.BiFunction;
 import io.reactivex.schedulers.Schedulers;
 import xiao.rxjava2test.R;
-import xiao.rxjava2test.model.ApiUser;
 import xiao.rxjava2test.model.User;
 import xiao.rxjava2test.utils.AppConstant;
 import xiao.rxjava2test.utils.Utils;
 
-public class MapExampleActivity extends AppCompatActivity {
+public class ZipExActivity extends AppCompatActivity {
     private String TAG = this.getClass().getSimpleName();
-
     private TextView tvOut;
 
     @Override
@@ -39,38 +36,61 @@ public class MapExampleActivity extends AppCompatActivity {
     }
 
     private void initUI() {
-        Button btnMap = findViewById(R.id.btn_do_something);
-        btnMap.setOnClickListener(new View.OnClickListener() {
+        Button btnDoSomething = findViewById(R.id.btn_do_something);
+        btnDoSomething.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 doSomeWork();
             }
         });
         tvOut = findViewById(R.id.tv_out);
+
     }
 
     /*
-     *从服务器中获取到的数据类型可能是ApiUser对象,
-     *因为我们的数据库或者其他原因使用User对象比ApiUser对象更好,
-     *所以我们可以通过Map操作符将ApiUser对象转换为User对象。
+     *有两个user集合,一个是cricket迷,一个是football迷,
+     *这里演示的是通过zip操作符找出同时喜欢cricket和football的user集合。
      */
     private void doSomeWork() {
-        getObservable()
+        Observable.zip(getCricketFansObservable(), getFootballFansObservable(),
+                new BiFunction<List<User>, List<User>, List<User>>() {
+                    @Override
+                    public List<User> apply(List<User> cricketFans, List<User> footballFans) {
+                        return Utils.filterUserWhoLovesBoth(cricketFans, footballFans);
+                    }
+                })
                 // Run on a background thread
                 .subscribeOn(Schedulers.io())
                 // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(new Function<List<ApiUser>, List<User>>() {
-
-                    @Override
-                    public List<User> apply(List<ApiUser> apiUsers) {
-                        return Utils.convertApiUserListToUserList(apiUsers);
-                    }
-                })
                 .subscribe(getObserver());
     }
 
-    private Observer<List<User>> getObserver() {
+    private ObservableSource<? extends List<User>> getFootballFansObservable() {
+        return Observable.create(new ObservableOnSubscribe<List<User>>() {
+            @Override
+            public void subscribe(ObservableEmitter<List<User>> emitter) throws Exception {
+                if (!emitter.isDisposed()) {
+                    emitter.onNext(Utils.getUserListWhoLovesCricket());
+                    emitter.onComplete();
+                }
+            }
+        });
+    }
+
+    private ObservableSource<? extends List<User>> getCricketFansObservable() {
+        return Observable.create(new ObservableOnSubscribe<List<User>>() {
+            @Override
+            public void subscribe(ObservableEmitter<List<User>> emitter) throws Exception {
+                if (!emitter.isDisposed()) {
+                    emitter.onNext(Utils.getUserListWhoLovesFootball());
+                    emitter.onComplete();
+                }
+            }
+        });
+    }
+
+    private Observer<? super List<User>> getObserver() {
         return new Observer<List<User>>() {
             @Override
             public void onSubscribe(Disposable d) {
@@ -109,17 +129,5 @@ public class MapExampleActivity extends AppCompatActivity {
                 tvOut.append(AppConstant.LINE_SEPARATOR);
             }
         };
-    }
-
-    private Observable<List<ApiUser>> getObservable() {
-        return Observable.create(new ObservableOnSubscribe<List<ApiUser>>() {
-            @Override
-            public void subscribe(ObservableEmitter<List<ApiUser>> emitter) throws Exception {
-                if (!emitter.isDisposed()) {
-                    emitter.onNext(Utils.getApiUserList());
-                    emitter.onComplete();
-                }
-            }
-        });
     }
 }

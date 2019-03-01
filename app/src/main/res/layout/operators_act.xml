@@ -11,20 +11,85 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MapExample"
             android:onClick="aboutMap"
+            android:text="MapExample"
             android:textAllCaps="false" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ZipExample"
             android:onClick="aboutZip"
+            android:text="ZipExample"
             android:textAllCaps="false" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DisposableExample"
             android:onClick="aboutDisposable"
+            android:text="DisposableExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutTake"
+            android:text="TakeExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutTimer"
+            android:text="TimerExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutInterval"
+            android:text="IntervalExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutReduce"
+            android:text="ReduceExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutBuffer"
+            android:text="BufferExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutFilter"
+            android:text="FilterExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutSkip"
+            android:text="SkipExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutScan"
+            android:text="ScanExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutReplay"
+            android:text="ReplayExample"
             android:textAllCaps="false" />
     </LinearLayout>
 

@@ -16,12 +16,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.SimpleActivity"/>
 
-        <activity android:name=".ui.OperatorsActivity"/>
-        <activity android:name=".ui.operators.MapExampleActivity"/>
-        <activity android:name=".ui.operators.ZipExampleActivity"/>
-        <activity android:name=".ui.operators.DisposableExampleActivity"/>
+        <activity android:name=".ui.ObserverTypeActivity" />
+        <activity android:name=".ui.observer.SimpleActivity" />
+        <activity android:name=".ui.observer.SingleObserverExActivity" />
+        <activity android:name=".ui.observer.CompletableObserverExActivity" />
+        <activity android:name=".ui.observer.FlowableExActivity" />
+        <activity android:name=".ui.observer.MaybeObserverExActivity" />
+
+        <activity android:name=".ui.OperatorsActivity" />
+        <activity android:name=".ui.operators.MapExActivity" />
+        <activity android:name=".ui.operators.ZipExActivity" />
+        <activity android:name=".ui.operators.DisposableExActivity" />
+        <activity android:name=".ui.operators.TakeExActivity" />
+        <activity android:name=".ui.operators.TimerExActivity" />
+        <activity android:name=".ui.operators.IntervalExActivity" />
+        <activity android:name=".ui.operators.ReduceExActivity" />
+        <activity android:name=".ui.operators.BufferExActivity" />
+        <activity android:name=".ui.operators.FilterExActivity" />
+        <activity android:name=".ui.operators.SkipExActivity"/>
+        <activity android:name=".ui.operators.ScanExActivity"/>
+        <activity android:name=".ui.operators.ReplayExActivity"/>
 
     </application>
 
