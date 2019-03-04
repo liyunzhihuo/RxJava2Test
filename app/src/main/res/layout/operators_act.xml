@@ -91,6 +91,41 @@
             android:onClick="aboutReplay"
             android:text="ReplayExample"
             android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutConcat"
+            android:text="ConcatExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutMerge"
+            android:text="MergeExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutDefer"
+            android:text="DeferExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutDistinct"
+            android:text="DistinctExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutLastOperator"
+            android:text="LastOperatorExample"
+            android:textAllCaps="false" />
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

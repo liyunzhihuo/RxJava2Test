@@ -7,10 +7,15 @@ import android.view.View;
 import xiao.rxjava2test.R;
 import xiao.rxjava2test.base.BaseActivity;
 import xiao.rxjava2test.ui.operators.BufferExActivity;
+import xiao.rxjava2test.ui.operators.ConcatExActivity;
+import xiao.rxjava2test.ui.operators.DeferExActivity;
 import xiao.rxjava2test.ui.operators.DisposableExActivity;
+import xiao.rxjava2test.ui.operators.DistinctExActivity;
 import xiao.rxjava2test.ui.operators.FilterExActivity;
 import xiao.rxjava2test.ui.operators.IntervalExActivity;
+import xiao.rxjava2test.ui.operators.LastOperatorExActivity;
 import xiao.rxjava2test.ui.operators.MapExActivity;
+import xiao.rxjava2test.ui.operators.MergeExActivity;
 import xiao.rxjava2test.ui.operators.ReduceExActivity;
 import xiao.rxjava2test.ui.operators.ReplayExActivity;
 import xiao.rxjava2test.ui.operators.ScanExActivity;
@@ -57,16 +62,40 @@ public class OperatorsActivity extends BaseActivity {
     public void aboutBuffer(View view) {
         startToOther(BufferExActivity.class);
     }
+
     public void aboutFilter(View view) {
         startToOther(FilterExActivity.class);
     }
+
     public void aboutSkip(View view) {
         startToOther(SkipExActivity.class);
     }
+
     public void aboutScan(View view) {
         startToOther(ScanExActivity.class);
     }
+
     public void aboutReplay(View view) {
         startToOther(ReplayExActivity.class);
+    }
+
+    public void aboutConcat(View view) {
+        startToOther(ConcatExActivity.class);
+    }
+
+    public void aboutMerge(View view) {
+        startToOther(MergeExActivity.class);
+    }
+
+    public void aboutDefer(View view) {
+        startToOther(DeferExActivity.class);
+    }
+
+    public void aboutDistinct(View view) {
+        startToOther(DistinctExActivity.class);
+    }
+
+    public void aboutLastOperator(View view) {
+        startToOther(LastOperatorExActivity.class);
     }
 }

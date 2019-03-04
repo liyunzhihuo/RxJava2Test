@@ -34,9 +34,14 @@
         <activity android:name=".ui.operators.ReduceExActivity" />
         <activity android:name=".ui.operators.BufferExActivity" />
         <activity android:name=".ui.operators.FilterExActivity" />
-        <activity android:name=".ui.operators.SkipExActivity"/>
-        <activity android:name=".ui.operators.ScanExActivity"/>
-        <activity android:name=".ui.operators.ReplayExActivity"/>
+        <activity android:name=".ui.operators.SkipExActivity" />
+        <activity android:name=".ui.operators.ScanExActivity" />
+        <activity android:name=".ui.operators.ReplayExActivity" />
+        <activity android:name=".ui.operators.ConcatExActivity" />
+        <activity android:name=".ui.operators.MergeExActivity" />
+        <activity android:name=".ui.operators.DeferExActivity" />
+        <activity android:name=".ui.operators.DistinctExActivity" />
+        <activity android:name=".ui.operators.LastOperatorExActivity" />
 
     </application>
 
