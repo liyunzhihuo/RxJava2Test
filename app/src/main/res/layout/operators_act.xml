@@ -126,6 +126,90 @@
             android:onClick="aboutLastOperator"
             android:text="LastOperatorExample"
             android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutReplaySubject"
+            android:text="ReplaySubjectExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutPublishSubject"
+            android:text="PublishSubjectExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutBehaviorSubject"
+            android:text="BehaviorSubjectExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutAsyncSubject"
+            android:text="AsyncSubjectExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutThrottleFirst"
+            android:text="ThrottleFirstExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutThrottleLast"
+            android:text="ThrottleLastExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutDebounce"
+            android:text="DebounceExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutWindow"
+            android:text="WindowExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutDelay"
+            android:text="DelayExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutSwitchMap"
+            android:text="SwitchMapExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutTakeWhile"
+            android:text="TakeWhileExample"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="aboutTakeUtil"
+            android:text="TakeUtilExample"
+            android:textAllCaps="false" />
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

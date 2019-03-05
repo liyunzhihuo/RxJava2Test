@@ -8,13 +8,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.Observable;
-import io.reactivex.SingleObserver;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.BiFunction;
+import io.reactivex.functions.Predicate;
 import xiao.rxjava2test.R;
 import xiao.rxjava2test.utils.AppConstant;
 
-public class LastOperatorExActivity extends AppCompatActivity {
+public class TakeWhileActivity extends AppCompatActivity {
     private String TAG = this.getClass().getSimpleName();
 
     private TextView tvOut;
@@ -37,29 +42,46 @@ public class LastOperatorExActivity extends AppCompatActivity {
         tvOut = findViewById(R.id.tv_out);
     }
 
-    /*
-     * last运算符仅发出Observable发出的最后一项。
-     *
-     * */
     private void doSomeWork() {
-        getObservable().last("A1") //如果源ObservableSource为空，则发出默认项（"A1"）
+        getStringObservable()
+                //延迟项目发射一秒钟
+                .zipWith(Observable.interval(0, 1, TimeUnit.SECONDS), new BiFunction<String, Long, String>() {
+
+                    @Override
+                    public String apply(String s, Long aLong) throws Exception {
+                        return s;
+                    }
+                })
+                //取出物品，直到满足条件。
+                .takeWhile(new Predicate<String>() {
+                    @Override
+                    public boolean test(String s) throws Exception {
+                        return !s.toLowerCase().contains("honey");
+                    }
+                })
+                //我们需要在MainThread上观察，因为延迟适用于后台线程以避免UI阻塞。
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getObserver());
     }
 
-    private SingleObserver<? super String> getObserver() {
-        return new SingleObserver<String>() {
+    protected Observable<String> getStringObservable() {
+        return Observable.just("Alpha", "Beta", "Cupcake", "Doughnut", "Eclair", "Froyo", "GingerBread",
+                "Honeycomb", "Ice cream sandwich");
+    }
+
+    protected Observer<? super String> getObserver() {
+        return new Observer<String>() {
             @Override
             public void onSubscribe(Disposable d) {
                 Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
-            public void onSuccess(String value) {
+            public void onNext(String value) {
                 tvOut.append(" onNext : value : " + value);
                 tvOut.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onNext value : " + value);
             }
-
 
             @Override
             public void onError(Throwable e) {
@@ -67,10 +89,13 @@ public class LastOperatorExActivity extends AppCompatActivity {
                 tvOut.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());
             }
-        };
-    }
 
-    private Observable<String> getObservable() {
-        return Observable.just("A1", "A2", "A3", "B1", "B2");
+            @Override
+            public void onComplete() {
+                tvOut.append(" onComplete");
+                tvOut.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " onComplete");
+            }
+        };
     }
 }

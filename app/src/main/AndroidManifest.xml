@@ -42,6 +42,18 @@
         <activity android:name=".ui.operators.DeferExActivity" />
         <activity android:name=".ui.operators.DistinctExActivity" />
         <activity android:name=".ui.operators.LastOperatorExActivity" />
+        <activity android:name=".ui.operators.ReplaySubjectExActivity" />
+        <activity android:name=".ui.operators.PublishSubjectExActivity" />
+        <activity android:name=".ui.operators.BehaviorSubjectExActivity" />
+        <activity android:name=".ui.operators.AsyncSubjectExActivity" />
+        <activity android:name=".ui.operators.ThrottleFirstExActivity" />
+        <activity android:name=".ui.operators.ThrottleLastExActivity" />
+        <activity android:name=".ui.operators.DebounceExActivity" />
+        <activity android:name=".ui.operators.WindowExActivity" />
+        <activity android:name=".ui.operators.DelayExActivity" />
+        <activity android:name=".ui.operators.SwitchMapActivity"/>
+        <activity android:name=".ui.operators.TakeWhileActivity"/>
+        <activity android:name=".ui.operators.TakeUtilActivity"/>
 
     </application>
 

@@ -8,13 +8,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.Observable;
-import io.reactivex.SingleObserver;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import xiao.rxjava2test.R;
 import xiao.rxjava2test.utils.AppConstant;
 
-public class LastOperatorExActivity extends AppCompatActivity {
+public class DelayExActivity extends AppCompatActivity {
     private String TAG = this.getClass().getSimpleName();
 
     private TextView tvOut;
@@ -38,28 +42,39 @@ public class LastOperatorExActivity extends AppCompatActivity {
     }
 
     /*
-     * last运算符仅发出Observable发出的最后一项。
-     *
-     * */
+     *delay 延时
+     */
     private void doSomeWork() {
-        getObservable().last("A1") //如果源ObservableSource为空，则发出默认项（"A1"）
+        tvOut.append("time1 = " + System.currentTimeMillis());
+        tvOut.append(AppConstant.LINE_SEPARATOR);
+        getObservable().delay(2, TimeUnit.SECONDS)
+                // Run on a background thread
+                .subscribeOn(Schedulers.io())
+                // Be notified on the main thread
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getObserver());
     }
 
-    private SingleObserver<? super String> getObserver() {
-        return new SingleObserver<String>() {
+    private Observable<String> getObservable() {
+        return Observable.just("Amit");
+    }
+
+    private Observer<String> getObserver() {
+        return new Observer<String>() {
+
             @Override
             public void onSubscribe(Disposable d) {
                 Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
-            public void onSuccess(String value) {
+            public void onNext(String value) {
+                tvOut.append("time2 = " + System.currentTimeMillis());
+                tvOut.append(AppConstant.LINE_SEPARATOR);
                 tvOut.append(" onNext : value : " + value);
                 tvOut.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onNext value : " + value);
+                Log.d(TAG, " onNext : value : " + value);
             }
-
 
             @Override
             public void onError(Throwable e) {
@@ -67,10 +82,13 @@ public class LastOperatorExActivity extends AppCompatActivity {
                 tvOut.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());
             }
-        };
-    }
 
-    private Observable<String> getObservable() {
-        return Observable.just("A1", "A2", "A3", "B1", "B2");
+            @Override
+            public void onComplete() {
+                tvOut.append(" onComplete");
+                tvOut.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " onComplete");
+            }
+        };
     }
 }
